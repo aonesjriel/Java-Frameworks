@@ -21,9 +21,22 @@ D.  Add an “About” page to the application to describe your chosen customer�
     about.html; line 13 -> Created title for webpage "About"
     about.html; line 17 -> Created h1 tag "About Us"
     about.html; line 19; -> Created generic about us content for the webpage
+    AboutPageController.java; Created controller for about page
+    AboutPageController.java; line 6 -> added controller annotation
+    AboutPageController.java; line 9 -> added getMapping annotation
+    mainscreen.html; line 20 -> added anchor tag to hold about us page link
+    about.html; line 18 -> added anchor tag to hold link back to mainscreen.html
 
 
 E.  Add a sample inventory appropriate for your chosen store to the application. You should have five parts and five products in your sample inventory and should not overwrite existing data in the database.
+
+    BootStrapData.java; line 62 -> Created outsourced part "pickup"
+    BootStrapData.java; line 71 -> Saved part in outsourcedPartRepository
+    BootStrapData.java; line 60 -> created condition to only display parts when count equals 0; so the items aren't duplicated in repo
+    BootStrapData.java; line 74-88->Created outsourcedParts "strings" and pick" and saved into the database
+    BootStrapData.java; line 91-106 -> Created inhouseParts "fretboard" and "customBridge" and saved into the database
+    BootStrapData.java; line 108-118 -> Created products "electricGuitar", "acousticGuitar", "drumKit", "bassGuitar", and "microphone" and saved into the database
+    application.properties; line 6 -> Updated version of database so nothing is duplicated
 
 
 Note: Make sure the sample inventory is added only when both the part and product lists are empty. When adding the sample inventory appropriate for the store, the inventory is stored in a set so duplicate items cannot be added to your products. When duplicate items are added, make a “multi-pack” part.
