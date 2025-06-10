@@ -25,6 +25,8 @@ import java.util.List;
 public class AddPartController {
     @Autowired
     private ApplicationContext context;
+    @Autowired
+    private PartRepository partRepository;
 
     @GetMapping("/showPartFormForUpdate")
     public String showPartFormForUpdate(@RequestParam("partID") int theId,Model theModel){
@@ -62,6 +64,30 @@ public class AddPartController {
         }
         else{
             return "negativeerror";
+        }
+    }
+
+    @GetMapping("/buyPart")
+    public String buyPart(@Valid @RequestParam("partID") int theId,  Model theModel){
+        PartService repo = context.getBean(PartServiceImpl.class);
+        Part part=repo.findById(theId);
+
+        int inv = part.getInv();
+
+        //check to see if inv value = 0
+        if(inv == 0){
+            //returning failure.html page
+            return "Failure";
+        }
+        else {
+            //reduce inv value by 1
+            inv = part.getInv() - 1;
+            //set new value of product inv
+            part.setInv(inv);
+            //saving product obj with new inv value
+            partRepository.save(part);
+            //return success.html page
+            return "Success";
         }
     }
 
