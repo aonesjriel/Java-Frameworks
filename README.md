@@ -47,6 +47,13 @@ F.  Add a “Buy Now” button to your product list. Your “Buy Now” button m
 • The button should decrement the inventory of that product by one. It should not affect the inventory of any of the associated parts.
 •  Display a message that indicates the success or failure of a purchase.
 
+    mainscreen.html; line 50 -> Creasted buy now button for parts
+    mainscreen.html; line 87 -> created buy now button for products
+    Failure.html -> created to indicate if purchase was failed
+    Success.html -> created to indicate if purchase was a success
+    AddProductController.java; line 180-> created getmapping for buy now button--created condition to display failure or success depending on inventory
+    AddPartController.java; line 70-> created getmapping for buy now button--created condition to display failure or success depending on inventory
+
 
 G.  Modify the parts to track maximum and minimum inventory by doing the following:
 •  Add additional fields to the part entity for maximum and minimum inventory.
@@ -54,15 +61,62 @@ G.  Modify the parts to track maximum and minimum inventory by doing the followi
 •  Add to the InhousePartForm and OutsourcedPartForm forms additional text inputs for the inventory so the user can set the maximum and minimum values.
 •  Rename the file the persistent storage is saved to.
 •  Modify the code to enforce that the inventory is between or at the minimum and maximum value.
+    Part.java; line 33-> created minInv value
+    Part.java; line 36-> created maxInv value
+    Part.java; line 96-111-> created accessor and mutator methods for min and max inv
+    InventoryValidator.java-> created class for inv validation
+    ValidInventory.java-> created annotaion to enfore valid inventory
+    Part.java; line 23-> added validator for inventory in class file
+    Part.java; line 4-> imported valid inventory validator
+    OutsourcedPartForm.html; line 25-> added field in form for minInventory
+    OutsourcedPartForm.html; line 27-> added field in form for maxInventory
+    OutsourcedPartForm.html; line 32-38-> created error message for invalid inventory entries
+    InhousePartForm.html; line 26-29-> created min and max inventory fields for the form
+    Mainscreen.html; line 39-40-> created min and max inventory in table
+    Mainscreen.html; line 49-50-> created text box for min and max inventory
+    BootStrapData.java; line 68-69-> set values for min and max inventory
+    BootStrapData.java; line 80-81-> set values for min and max inventory
+    BootStrapData.java; line 90-91-> set values for min and max inventory
+    BootStrapData.java; line 102-103-> set values for min and max inventory
+    BootStrapData.java; line 112-113-> set values for min and max inventory
+    application.properties; line 6-> updated database version
+    InhousePartForm.html; line 32-38-> created error message for invalid inventory
+    ProductInventoryValidator; created class for max and min valid inventory entries
+    ProductValidInventory.java; created annotation to enforce valid inventory
+    Product.java; line 24-> added Inventory validator
+    Product.java; line 33-37-> created min and max Inv
+    Product.java; line 97-111-> created accessor and mutator methods for max and min inv
+    Product.java; line 4-> imported valid inventory validator
+    productForm.html; line 24-27-> added min and max inventory fields 
+    productForm.html; line 30-36-> created error message to display if inventories are invalid
+    mainscreen.html; line 80-81-> added min inv and max inv to table
+    mainscreen.html; line 90-91-> added min and max inv columns
+    BootStrapData.java; line 120-121-> set values for min and max inventory
+    BootStrapData.java; line 124-125-> set values for min and max inventory
+    BootStrapData.java; line 128-129-> set values for min and max inventory
+    BootStrapData.java; line 132-133-> set values for min and max inventory
+    BootStrapData.java; line 136-137-> set values for min and max inventory
+
+
+
+
 
 
 H.  Add validation for between or at the maximum and minimum fields. The validation must include the following:
 •  Display error messages for low inventory when adding and updating parts if the inventory is less than the minimum number of parts.
 •  Display error messages for low inventory when adding and updating products lowers the part inventory below the minimum.
 •  Display error messages when adding and updating parts if the inventory is greater than the maximum.
+    Completed the first two bullets in part G
+    EnufPartsValidator.java; line 37-39-> added condition that checks min part inventory to make sure no products can be updated with invalid part amount
+    ValidEnufParts,java; line 20 -> altered default error message
+    application.properties; line 6-> updated database
+
+
 
 
 I.  Add at least two unit tests for the maximum and minimum fields to the PartTest class in the test package.
+
+    PartTest.java; line 94-110-> created getMinInv() test and getMaxInv() test to check max and min values of parts
 
 
 J.  Remove the class files for any unused validators in order to clean your code.
