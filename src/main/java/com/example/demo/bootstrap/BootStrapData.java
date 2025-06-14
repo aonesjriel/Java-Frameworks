@@ -65,6 +65,8 @@ public class BootStrapData implements CommandLineRunner {
             pickup.setCompanyName("EMGPickups");
             pickup.setName("Pickup");
             pickup.setInv(5);
+            pickup.setMinInv(1);
+            pickup.setMaxInv(15);
             pickup.setPrice(266.00);
             pickup.setId(1);
 
@@ -75,6 +77,8 @@ public class BootStrapData implements CommandLineRunner {
             strings.setCompanyName("ErnieBall");
             strings.setName("Electric Guitar Strings");
             strings.setInv(11);
+            strings.setMinInv(1);
+            strings.setMaxInv(20);
             strings.setPrice(9.99);
             strings.setId(2);
             outsourcedPartRepository.save(strings);
@@ -83,6 +87,8 @@ public class BootStrapData implements CommandLineRunner {
             pick.setCompanyName("Tortex");
             pick.setName("Guitar Pick");
             pick.setInv(35);
+            pick.setMinInv(20);
+            pick.setMaxInv(75);
             pick.setPrice(0.99);
             pick.setId(3);
             outsourcedPartRepository.save(pick);
@@ -93,6 +99,8 @@ public class BootStrapData implements CommandLineRunner {
 
             fretboard.setName("Fretboard");
             fretboard.setInv(2);
+            fretboard.setMinInv(1);
+            fretboard.setMaxInv(5);
             fretboard.setPrice(50.00);
 
 
@@ -101,20 +109,32 @@ public class BootStrapData implements CommandLineRunner {
             InhousePart customBridge = new InhousePart();
             customBridge.setName("Reverb Custom Bridge");
             customBridge.setInv(7);
+            customBridge.setMinInv(1);
+            customBridge.setMaxInv(15);
             customBridge.setPrice(34.99);
             inhousePartRepository.save(customBridge);
         }
 
         if (productRepository.count() == 0) {
             Product electricGuitar = new Product("Custom Electric Guitar", 749.99, 5);
+            electricGuitar.setMinInv(1);
+            electricGuitar.setMaxInv(10);
             productRepository.save(electricGuitar);
             Product acousticGuitar = new Product("Custom Acoustic Guitar", 549.99, 3);
+            acousticGuitar.setMinInv(1);
+            acousticGuitar.setMaxInv(7);
             productRepository.save(acousticGuitar);
             Product drumKit = new Product("Drum Kit", 699.99, 2);
+            drumKit.setMinInv(1);
+            drumKit.setMaxInv(3);
             productRepository.save(drumKit);
             Product bassGuitar = new Product("Bass Guitar", 487.99, 3);
+            bassGuitar.setMinInv(1);
+            bassGuitar.setMaxInv(5);
             productRepository.save(bassGuitar);
             Product microphone = new Product("Microphone", 109.99, 6);
+            microphone.setMinInv(1);
+            microphone.setMaxInv(10);
             productRepository.save(microphone);
 
         }
